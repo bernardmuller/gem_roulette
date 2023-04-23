@@ -33,8 +33,8 @@
 		justify-content: center;
 		align-items: center;
 		color: white;
-		max-height: 2rem;
-		max-width: 2rem;
+		max-height: 1.6rem;
+		max-width: 1.6rem;
 	}
 
 	main {

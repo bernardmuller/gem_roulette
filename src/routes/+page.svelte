@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
-	import { get, writable } from "svelte/store";
+
 	import redGem from "../red_gem.svg";
 	import blueGem from "../blue_gem.svg";
 	import goldGem from "../gold_gem.svg";
@@ -9,28 +9,13 @@
 
 	import { roll, getSample, Tiers } from "./game";
 	import Scoreboard from "./Scoreboard.svelte";
-	import { onMount } from "svelte";
 
 	let sample: Tiers[] = [];
 	let sampleGems: any = [];
 	let currentIdx = 0;
 	let isSpinning = false;
 	let rotation = 0;
-
-	const loadGemScore = () => {
-		if (!browser) return;
-		let gemScore = localStorage.get("gem_score");
-		if (!gemScore) {
-			localStorage.set("gem_score", [
-				{ name: Tiers.BLUE, score: 0 },
-				{ name: Tiers.PURPLE, score: 0 },
-				{ name: Tiers.PINK, score: 0 },
-				{ name: Tiers.RED, score: 0 },
-				{ name: Tiers.GOLD, score: 0 },
-			]);
-		}
-		return gemScore;
-	};
+	let rolls = 0;
 
 	let score = [
 		{ name: Tiers.BLUE, score: 0 },
@@ -39,35 +24,6 @@
 		{ name: Tiers.RED, score: 0 },
 		{ name: Tiers.GOLD, score: 0 },
 	];
-
-	onMount(() => {
-		// loadGemScore();
-	});
-
-	const loadGemColorScore = (gem: Tiers) => {
-		if (!browser) return;
-		const color = localStorage
-			.get("gem_score")
-			.filter(
-				(g: { name: string; score: number }) => g.name === Tiers.BLUE
-			)[0]
-			.score.then((s: number) => s);
-		return color;
-	};
-
-	// let score = [
-	// 	{
-	// 		name: Tiers.BLUE,
-	// 		score: loadGemColorScore(Tiers.BLUE) || 0,
-	// 	},
-	// 	{
-	// 		name: Tiers.PURPLE,
-	// 		score: loadGemColorScore(Tiers.PURPLE) || 0,
-	// 	},
-	// 	{ name: Tiers.PINK, score: loadGemColorScore(Tiers.PINK) || 0 },
-	// 	{ name: Tiers.RED, score: loadGemColorScore(Tiers.RED) || 0 },
-	// 	{ name: Tiers.GOLD, score: loadGemColorScore(Tiers.GOLD) || 0 },
-	// ];
 
 	function spin() {
 		currentIdx = Math.floor(Math.random() * sample.length);
@@ -149,6 +105,7 @@
 			currentIdx = sample.length - 1;
 
 			addScore();
+			rolls = rolls += 1;
 
 			isSpinning = false;
 		}, 3000);
@@ -193,6 +150,9 @@
 </section>
 
 <Scoreboard scores={score} />
+<p style="font-size:small;">
+	Spins: {rolls}
+</p>
 
 <style>
 	.container {
