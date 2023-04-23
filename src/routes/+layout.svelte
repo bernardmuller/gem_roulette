@@ -1,5 +1,6 @@
 <script>
 	import "./styles.css";
+	import FaGithub from "svelte-icons/fa/FaGithub.svelte";
 </script>
 
 <div class="app">
@@ -8,9 +9,13 @@
 	</main>
 
 	<footer>
-		<p>
-			visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
-		</p>
+		<a
+			href="https://github.com/bernardmuller/gem_roulette"
+			class="github-link"
+			target="_blank"
+		>
+			<FaGithub size={30} color="white" />
+		</a>
 	</footer>
 </div>
 
@@ -21,6 +26,15 @@
 		min-height: 100vh;
 		background-color: #171717;
 		color: white;
+	}
+
+	.github-link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		max-height: 2rem;
+		max-width: 2rem;
 	}
 
 	main {
