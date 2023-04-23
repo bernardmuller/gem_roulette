@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="gem">
+    <path fill="#58B9FF" d="m4 8 8-5 8 5v8l-8 5-8-5V8Z"></path>
+    <path fill="#94D2FF" d="M12 6V3L4 8v8l8 5v-3l-5-3.5v-5L12 6Z"></path>
+    <path fill="#228AD6" d="M12 6V3l8 5v8l-8 5v-3l5-3.5v-5L12 6Z"></path>
+</svg>

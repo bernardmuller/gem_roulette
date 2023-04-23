@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="gemstone">
+    <path fill="#FFD74A" d="m5 7 7-4 7 4 2 5-2 5-7 4-7-4-2-5 2-5Z"></path>
+    <path fill="#E8B811" d="M12 7V3l7 4 2 5-2 5-7 4v-4l5-5-5-5Z"></path>
+    <path fill="#FFEFB7" d="M12 7V3L5 7l-2 5 2 5 7 4v-4l-5-5 5-5Z"></path>
+</svg>
